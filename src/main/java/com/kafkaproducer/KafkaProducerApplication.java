@@ -1,16 +1,22 @@
 package com.kafkaproducer;
 
+import com.kafkaproducer.producer.FixedRateProducer;
 import com.kafkaproducer.producer.HelloKafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class KafkaProducerApplication implements CommandLineRunner {
 
 	@Autowired
 	private HelloKafkaProducer helloKafkaProducer;
+
+	@Autowired
+	private FixedRateProducer fixedRateProducer;
 
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaProducerApplication.class, args);
@@ -18,6 +24,7 @@ public class KafkaProducerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		helloKafkaProducer.sendHello("TestName" + Math.random());
+//		helloKafkaProducer.sendHello("TestName" + Math.random());
+		fixedRateProducer.sendMessage();
 	}
 }
