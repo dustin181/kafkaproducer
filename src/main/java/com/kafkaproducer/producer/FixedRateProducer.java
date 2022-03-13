@@ -16,13 +16,13 @@ public class FixedRateProducer {
     public FixedRateProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
-
-    @Scheduled(fixedRate = 1000)
-    public void sendMessage() {
-        i++;
-        log.info("i is " + i);
-        kafkaTemplate.send("t_fixedrate", "Fixed rate " + i);
-    }
+//
+//    @Scheduled(fixedRate = 1000)
+//    public void sendMessage() {
+//        i++;
+//        log.info("i is " + i);
+//        kafkaTemplate.send("t_fixedrate", "Fixed rate " + i);
+//    }
 
 
 }
