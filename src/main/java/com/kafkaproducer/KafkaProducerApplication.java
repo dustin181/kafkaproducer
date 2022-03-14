@@ -1,5 +1,6 @@
 package com.kafkaproducer;
 
+import com.kafkaproducer.producer.EmployeeJsonProducer;
 import com.kafkaproducer.producer.FixedRateProducer;
 import com.kafkaproducer.producer.HelloKafkaProducer;
 import com.kafkaproducer.producer.KeyProducer;
@@ -24,21 +25,17 @@ public class KafkaProducerApplication implements CommandLineRunner {
 	@Autowired
 	private KeyProducer keyProducer;
 
+	@Autowired
+	private EmployeeJsonProducer employeeJsonProducer;
+
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaProducerApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-//		helloKafkaProducer.sendHello("TestName" + Math.random());
-//		fixedRateProducer.sendMessage();
-		for(int i = 0;i < 30;i++){
-			String key = "key-" + i%4;
-			String data = "data " + i + " with key " + key;
-			keyProducer.send(key, data);
-			log.info("message was: " + key + data);
 
-		}
+
 
 	}
 }
